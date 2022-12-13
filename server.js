@@ -30,6 +30,8 @@ app.use(
   cors({
     origin: ["https://quintadocabril.netlify.app/"],
     methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    origin: true,
   })
 );
 
