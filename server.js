@@ -6,9 +6,11 @@ import vinhoRoute from "./routes/vinhoRoute.js";
 import orderRoute from "./routes/orderRoute.js";
 import cors from "cors";
 import dotenv from "dotenv";
+import config from "./config.js";
 
-const mongodbUrl =
-  "mongodb+srv://quintadocabril:B22ldqg53vefxBUJ@cluster0.zr2pdzi.mongodb.net/?retryWrites=true&w=majority";
+dotenv.config();
+
+const mongodbUrl = config.MONGODB_URL;
 mongoose
   .connect(mongodbUrl, {
     useNewUrlParser: true,
@@ -34,14 +36,13 @@ app.use("/api/users", userRoute);
 app.use("/api/vinhos", vinhoRoute);
 app.use("/api/orders", orderRoute);
 app.get("/api/config/paypal", (req, res) => {
-  res.send(process.env.PAYPAL_CLIENT_ID || "SB");
+  res.send(config.PAYPAL_CLIENT_ID || "SB");
 });
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`serve at http://localhost:${port}`);
+app.listen(config.PORT, () => {
+  console.log(`Server at http://localhost:${config.PORT}`);
 });
