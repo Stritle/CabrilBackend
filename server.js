@@ -1,5 +1,4 @@
 import express from "express";
-import config from "./config.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoute from "./routes/userRoute.js";
@@ -7,8 +6,6 @@ import bodyParser from "body-parser";
 import vinhoRoute from "./routes/vinhoRoute.js";
 import orderRoute from "./routes/orderRoute.js";
 import cors from "cors";
-
-dotenv.config();
 
 const mongodbUrl = process.env.MONGODB_URL;
 mongoose
@@ -62,6 +59,7 @@ app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server at http://localhost:${config.PORT}`);
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`serve at http://localhost:${port}`);
 });
