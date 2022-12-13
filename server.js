@@ -6,6 +6,7 @@ import userRoute from "./routes/userRoute.js";
 import bodyParser from "body-parser";
 import vinhoRoute from "./routes/vinhoRoute.js";
 import orderRoute from "./routes/orderRoute.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -24,6 +25,12 @@ if (mongodbUrl) {
 
 const app = express();
 app.use(bodyParser.json());
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://quintadocabril.onrender.com"],
+  })
+);
 
 app.use("/api/users", userRoute);
 app.use("/api/vinhos", vinhoRoute);
