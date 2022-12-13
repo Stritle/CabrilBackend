@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import config from "./config.js";
 
 const getToken = (user) => {
   return jwt.sign(
@@ -9,7 +8,7 @@ const getToken = (user) => {
       email: user.email,
       isAdmin: user.isAdmin,
     },
-    config.JWT_SECRET || "somethingsecret",
+    process.env.JWT_SECRET || "somethingsecret",
     {
       expiresIn: "48h",
     }
@@ -20,7 +19,7 @@ const isAuth = (req, res, next) => {
 
   if (token) {
     const onlyToken = token.slice(0, token.length);
-    jwt.verify(onlyToken, config.JWT_SECRET, (err, decode) => {
+    jwt.verify(onlyToken, process.env.JWT_SECRET, (err, decode) => {
       if (err) {
         return res.status(401).send({ message: "Invalid Token" });
       }

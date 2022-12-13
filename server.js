@@ -6,11 +6,10 @@ import userRoute from "./routes/userRoute.js";
 import bodyParser from "body-parser";
 import vinhoRoute from "./routes/vinhoRoute.js";
 import orderRoute from "./routes/orderRoute.js";
-import path from "path";
 
 dotenv.config();
 
-const mongodbUrl = config.MONGODB_URL;
+const mongodbUrl = process.env.MONGODB_URL;
 mongoose
   .connect(mongodbUrl, {
     useNewUrlParser: true,
@@ -30,7 +29,7 @@ app.use("/api/users", userRoute);
 app.use("/api/vinhos", vinhoRoute);
 app.use("/api/orders", orderRoute);
 app.get("/api/config/paypal", (req, res) => {
-  res.send(config.PAYPAL_CLIENT_ID || "SB");
+  res.send(process.env.PAYPAL_CLIENT_ID || "SB");
 });
 
 // const __dirname = path.resolve();
@@ -56,6 +55,6 @@ app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
-app.listen(config.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`Server at http://localhost:${config.PORT}`);
 });
