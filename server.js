@@ -28,11 +28,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://quintadocabril.onrender.com",
-      "https://quintadocabril.netlify.app/",
-    ],
+    origin: ["http://localhost:3000", "https://quintadocabril.netlify.app/"],
   })
 );
 
