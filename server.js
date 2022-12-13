@@ -33,11 +33,11 @@ app.get("/api/config/paypal", (req, res) => {
   res.send(config.PAYPAL_CLIENT_ID || "SB");
 });
 
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "frontend/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/build/index.html"));
-});
+// const __dirname = path.resolve();
+// app.use(express.static(path.join(__dirname, "frontend/build")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "frontend/build/index.html"));
+// });
 
 // app.get("/api/vinhos/:id", (req, res) => {
 //   const vinhoId = req.params.id;
