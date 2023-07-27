@@ -29,10 +29,10 @@ router.post("/register", async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    phoneNumber: req.body.phoneNumber,
-    numberOfChildren: req.body.numberOfChildren,
-    birthDate: req.body.birthDate,
-    maritalStatus: req.body.maritalStatus,
+    // phoneNumber: req.body.phoneNumber,
+    // numberOfChildren: req.body.numberOfChildren,
+    // birthDate: req.body.birthDate,
+    // maritalStatus: req.body.maritalStatus,
   });
   const newUser = await user.save();
   if (newUser) {
