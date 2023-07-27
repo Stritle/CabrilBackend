@@ -40,6 +40,7 @@ router.post("/register", async (req, res) => {
       _id: newUser.id,
       email: newUser.email,
       name: newUser.name,
+      password: newUser.password,
       isAdmin: newUser.isAdmin,
       token: getToken(newUser),
     });
