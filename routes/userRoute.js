@@ -38,8 +38,8 @@ router.post("/register", async (req, res) => {
   if (newUser) {
     res.send({
       _id: newUser.id,
-      email: newUser.email,
       name: newUser.name,
+      email: newUser.email,
       password: newUser.password,
       isAdmin: newUser.isAdmin,
       token: getToken(newUser),
