@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema(
     maritalStatus: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
     userType: { type: String, default: "Standart User" },
-    userImage: { data: Buffer, contentType: String },
+    userImage: { type: String },
   },
   {
     timestamps: true,
