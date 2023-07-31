@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema(
     numberOfChildren: { type: String, required: true },
     maritalStatus: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
+    userType: { type: Boolean, default: "Standart User" },
   },
   {
     timestamps: true,
