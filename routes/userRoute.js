@@ -20,6 +20,7 @@ router.post("/signin", async (req, res) => {
       maritalStatus: signinUser.maritalStatus,
       isAdmin: signinUser.isAdmin,
       userType: signinUser.userType,
+      userImage: signinUser.userImage,
       token: getToken(signinUser),
     });
   } else res.status(401).send({ msg: "Invalide email or password" });
@@ -34,6 +35,7 @@ router.post("/register", async (req, res) => {
     birthDate: req.body.birthDate,
     numberOfChildren: req.body.numberOfChildren,
     maritalStatus: req.body.maritalStatus,
+    userImage: req.body.userImage,
   });
   const newUser = await user.save();
   if (newUser) {
@@ -46,6 +48,7 @@ router.post("/register", async (req, res) => {
       birthDate: newUser.birthDate,
       numberOfChildren: newUser.numberOfChildren,
       maritalStatus: newUser.maritalStatus,
+      userImage: newUser.userImage,
       isAdmin: newUser.isAdmin,
       token: getToken(newUser),
     });
