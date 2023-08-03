@@ -95,6 +95,7 @@ router.put("/:id", async (req, res) => {
       maritalStatus: updatedUser.maritalStatus,
       isAdmin: updatedUser.isAdmin,
       token: getToken(updatedUser),
+      _id: updatedUser._id,
     });
   } else {
     res.status(404).send({ message: "User Not Found" });
