@@ -90,6 +90,10 @@ router.put("/:id", async (req, res) => {
       _id: updatedUser.id,
       name: updatedUser.name,
       email: updatedUser.email,
+      phoneNumber: updatedUser.phoneNumber,
+      birthDate: updatedUser.birthDate,
+      numberOfChildren: updatedUser.numberOfChildren,
+      maritalStatus: updatedUser.maritalStatus,
       isAdmin: updatedUser.isAdmin,
       token: getToken(updatedUser),
     });
