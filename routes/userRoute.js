@@ -87,7 +87,6 @@ router.put("/:id", async (req, res) => {
     user.maritalStatus = req.body.maritalStatus || user.maritalStatus;
     const updatedUser = await user.save();
     res.send({
-      _id: updatedUser.id,
       name: updatedUser.name,
       email: updatedUser.email,
       phoneNumber: updatedUser.phoneNumber,
