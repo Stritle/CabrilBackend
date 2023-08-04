@@ -118,11 +118,11 @@ router.get("/createadmin", async (req, res) => {
   }
 });
 
-router.post("/uploadPhoto", upload.array("photo", 3), (req, res) => {
-  console.log("file", req.files);
-  console.log("body", req.body);
-  res.status(200).json({
-    message: "success!",
-  });
-});
+// router.post("/uploadPhoto", upload.array("photo", 3), (req, res) => {
+//   console.log("file", req.files);
+//   console.log("body", req.body);
+//   res.status(200).json({
+//     message: "success!",
+//   });
+// });
 export default router;

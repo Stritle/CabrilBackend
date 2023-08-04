@@ -27,16 +27,16 @@ if (mongodbUrl) {
 const app = express();
 app.use(bodyParser.json());
 
-const storage = multer.diskStorage({
-  destination(req, file, callback) {
-    callback(null, "./images");
-  },
-  filename(req, file, callback) {
-    callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination(req, file, callback) {
+//     callback(null, "./images");
+//   },
+//   filename(req, file, callback) {
+//     callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
+//   },
+// });
 
-export const upload = multer({ storage });
+// export const upload = multer({ storage });
 
 app.use(
   cors({
