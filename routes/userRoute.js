@@ -56,7 +56,6 @@ router.post("/register", async (req, res) => {
     birthDate: req.body.birthDate,
     numberOfChildren: req.body.numberOfChildren,
     maritalStatus: req.body.maritalStatus,
-    profilePicture: req.body.profilePicture,
   });
   const newUser = await user.save();
   if (newUser) {
@@ -69,7 +68,6 @@ router.post("/register", async (req, res) => {
       birthDate: newUser.birthDate,
       numberOfChildren: newUser.numberOfChildren,
       maritalStatus: newUser.maritalStatus,
-      profilePicture: newUser.profilePicture,
       isAdmin: newUser.isAdmin,
       token: getToken(newUser),
     });
