@@ -1,7 +1,6 @@
 import express from "express";
 import User from "../models/userModel.js";
 import { getToken, isAuth } from "../util.js";
-// import { upload } from "../server.js";
 
 const router = express.Router();
 
@@ -118,11 +117,4 @@ router.get("/createadmin", async (req, res) => {
   }
 });
 
-// router.post("/uploadPhoto", upload.array("photo", 3), (req, res) => {
-//   console.log("file", req.files);
-//   console.log("body", req.body);
-//   res.status(200).json({
-//     message: "success!",
-//   });
-// });
 export default router;

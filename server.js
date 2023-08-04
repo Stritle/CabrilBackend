@@ -27,16 +27,16 @@ if (mongodbUrl) {
 const app = express();
 app.use(bodyParser.json());
 
-// const storage = multer.diskStorage({
-//   destination(req, file, callback) {
-//     callback(null, "./images");
-//   },
-//   filename(req, file, callback) {
-//     callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
-//   },
-// });
+const storage = multer.diskStorage({
+  destination(req, file, callback) {
+    callback(null, "./images");
+  },
+  filename(req, file, callback) {
+    callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
+  },
+});
 
-// export const upload = multer({ storage });
+const upload = multer({ storage });
 
 app.use(
   cors({
@@ -56,6 +56,14 @@ app.get("/api/config/paypal", (req, res) => {
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
+});
+
+app.post("/uploadPhoto", upload.array("photo", 3), (req, res) => {
+  console.log("file", req.files);
+  console.log("body", req.body);
+  res.status(200).json({
+    message: "success!",
+  });
 });
 
 app.listen(config.PORT, () => {
