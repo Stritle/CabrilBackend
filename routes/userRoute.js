@@ -117,7 +117,8 @@ router.get("/createadmin", async (req, res) => {
     res.send({ msg: error.message });
   }
 });
-router.post("/uploadPhoto", upload.array("photo", 3), async (req, res) => {
+
+router.post("/uploadPhoto", upload.array("photo", 3), (req, res) => {
   console.log("file", req.files);
   console.log("body", req.body);
   res.status(200).json({
