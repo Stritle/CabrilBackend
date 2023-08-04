@@ -41,7 +41,7 @@ router.post("/signin", async (req, res) => {
       maritalStatus: signinUser.maritalStatus,
       isAdmin: signinUser.isAdmin,
       userType: signinUser.userType,
-      userImage: signinUser.userImage,
+      profilePicture: signinUser.profilePicture,
       token: getToken(signinUser),
     });
   } else res.status(401).send({ msg: "Invalide email or password" });
@@ -56,7 +56,7 @@ router.post("/register", async (req, res) => {
     birthDate: req.body.birthDate,
     numberOfChildren: req.body.numberOfChildren,
     maritalStatus: req.body.maritalStatus,
-    userImage: req.body.userImage,
+    profilePicture: req.body.profilePicture,
   });
   const newUser = await user.save();
   if (newUser) {
@@ -69,7 +69,7 @@ router.post("/register", async (req, res) => {
       birthDate: newUser.birthDate,
       numberOfChildren: newUser.numberOfChildren,
       maritalStatus: newUser.maritalStatus,
-      userImage: newUser.userImage,
+      profilePicture: newUser.profilePicture,
       isAdmin: newUser.isAdmin,
       token: getToken(newUser),
     });
@@ -106,6 +106,7 @@ router.put("/:id", upload.array("photo", 3), async (req, res) => {
     user.birthDate = req.body.birthDate || user.birthDate;
     user.numberOfChildren = req.body.numberOfChildren || user.numberOfChildren;
     user.maritalStatus = req.body.maritalStatus || user.maritalStatus;
+    user.profilePicture = req.body.profilePicture || user.profilePicture;
     const updatedUser = await user.save();
     res.send({
       name: updatedUser.name,
@@ -114,6 +115,7 @@ router.put("/:id", upload.array("photo", 3), async (req, res) => {
       birthDate: updatedUser.birthDate,
       numberOfChildren: updatedUser.numberOfChildren,
       maritalStatus: updatedUser.maritalStatus,
+      profilePicture: updatedUser.profilePicture,
       isAdmin: updatedUser.isAdmin,
       token: getToken(updatedUser),
       _id: updatedUser.id,
