@@ -65,7 +65,7 @@ app.post("/uploadPhoto", upload.array("photo", 3), (req, res) => {
     message: "success!",
   });
 });
-
+//mdssdlkfm
 app.listen(config.PORT, () => {
   console.log(`Server at http://localhost:${config.PORT}`);
 });
