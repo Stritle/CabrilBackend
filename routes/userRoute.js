@@ -1,7 +1,7 @@
 import express from "express";
 import User from "../models/userModel.js";
 import { getToken, isAuth } from "../util.js";
-import { upload } from "../server.js";
+// import { upload } from "../server.js";
 
 const router = express.Router();
 
