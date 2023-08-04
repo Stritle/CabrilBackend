@@ -95,7 +95,7 @@ router.post("/register", async (req, res) => {
 //     res.status(404).send({ message: "User Not Found" });
 //   }
 // });
-router.put("/:id", upload.array("photo", 3), async (req, res) => {
+router.put("/:id", async (req, res) => {
   const userId = req.params.id;
   const user = await User.findById(userId);
   if (user) {
