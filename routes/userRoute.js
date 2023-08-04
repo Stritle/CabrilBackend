@@ -1,8 +1,29 @@
 import express from "express";
 import User from "../models/userModel.js";
 import { getToken, isAuth } from "../util.js";
-
+import multer from "multer";
 const router = express.Router();
+//______________________________
+// const storage = multer.diskStorage({
+//   destination(req, file, callback) {
+//     callback(null, "./images");
+//   },
+//   filename(req, file, callback) {
+//     callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
+//   },
+// });
+
+// const upload = multer({ storage });
+
+// router.post("/api/uploadPhoto", upload.array("photo", 3), async (req, res) => {
+//   console.log("file", req.files);
+//   console.log("body", req.body);
+//   res.status(200).json({
+//     message: "success!",
+//   });
+// });
+
+//_____________________________________
 
 router.post("/signin", async (req, res) => {
   const signinUser = await User.findOne({
@@ -74,7 +95,7 @@ router.post("/register", async (req, res) => {
 //     res.status(404).send({ message: "User Not Found" });
 //   }
 // });
-router.put("/:id", async (req, res) => {
+router.put("/:id", upload.array("photo", 3), async (req, res) => {
   const userId = req.params.id;
   const user = await User.findById(userId);
   if (user) {
@@ -102,19 +123,19 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.get("/createadmin", async (req, res) => {
-  try {
-    const user = new User({
-      name: "antonio",
-      email: "nuno_fernandes18@hotmail.com",
-      password: "123456",
-      isAdmin: true,
-    });
-    const newUser = await user.save();
-    res.send(newUser);
-  } catch (error) {
-    res.send({ msg: error.message });
-  }
-});
+// router.get("/createadmin", async (req, res) => {
+//   try {
+//     const user = new User({
+//       name: "antonio",
+//       email: "nuno_fernandes18@hotmail.com",
+//       password: "123456",
+//       isAdmin: true,
+//     });
+//     const newUser = await user.save();
+//     res.send(newUser);
+//   } catch (error) {
+//     res.send({ msg: error.message });
+//   }
+// });
 
 export default router;
