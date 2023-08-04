@@ -13,9 +13,9 @@ const userSchema = new mongoose.Schema(
     birthDate: { type: String, required: true },
     numberOfChildren: { type: String, required: true },
     maritalStatus: { type: String, required: true },
+    profilePicture: { type: String },
     isAdmin: { type: Boolean, required: true, default: false },
     userType: { type: String, default: "Standart User" },
-    profilePicture: { type: String },
   },
   {
     timestamps: true,
