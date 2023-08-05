@@ -41,7 +41,7 @@ router.post("/signin", async (req, res) => {
       maritalStatus: signinUser.maritalStatus,
       isAdmin: signinUser.isAdmin,
       userType: signinUser.userType,
-      profilePicture: signinUser.profilePicture,
+      // profilePicture: signinUser.profilePicture,
       token: getToken(signinUser),
     });
   } else res.status(401).send({ msg: "Invalide email or password" });
@@ -56,7 +56,7 @@ router.post("/register", async (req, res) => {
     birthDate: req.body.birthDate,
     numberOfChildren: req.body.numberOfChildren,
     maritalStatus: req.body.maritalStatus,
-    profilePicture: req.body.profilePicture,
+    // profilePicture: req.body.profilePicture,
   });
   const newUser = await user.save();
   res.status(201).json({ message: "Utilizador criado com sucesso." });
@@ -70,7 +70,7 @@ router.post("/register", async (req, res) => {
       birthDate: newUser.birthDate,
       numberOfChildren: newUser.numberOfChildren,
       maritalStatus: newUser.maritalStatus,
-      profilePicture: newUser.profilePicture,
+      // profilePicture: newUser.profilePicture,
       isAdmin: newUser.isAdmin,
       token: getToken(newUser),
     });
