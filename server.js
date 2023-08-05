@@ -26,18 +26,8 @@ if (mongodbUrl) {
 
 const app = express();
 app.use(bodyParser.json({ limit: "20mb" }));
+//____________________________________________
 
-// const storage = multer.diskStorage({
-//   destination(req, file, callback) {
-//     callback(null, "./images");
-//   },
-//   filename(req, file, callback) {
-//     callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
-//   },
-// });
-
-// const upload = multer({ storage });
-//___________________________________________
 const ImageSchema = new mongoose.Schema({
   data: String,
 });
@@ -76,14 +66,6 @@ app.get("/api/config/paypal", (req, res) => {
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
-
-// app.post("/api/uploadPhoto", upload.array("photo", 3), (req, res) => {
-//   console.log("file", req.files);
-//   console.log("body", req.body);
-//   res.status(200).json({
-//     message: "success!",
-//   });
-// });
 
 app.listen(config.PORT, () => {
   console.log(`Server at http://localhost:${config.PORT}`);
