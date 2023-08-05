@@ -107,7 +107,6 @@ router.put("/:id", async (req, res) => {
     user.birthDate = req.body.birthDate || user.birthDate;
     user.numberOfChildren = req.body.numberOfChildren || user.numberOfChildren;
     user.maritalStatus = req.body.maritalStatus || user.maritalStatus;
-    // user.profilePicture = req.body.profilePicture || user.profilePicture;
     const updatedUser = await user.save();
     res.status(201).json({ message: "Dados atualizados com sucesso" });
     res.send({
@@ -117,7 +116,6 @@ router.put("/:id", async (req, res) => {
       birthDate: updatedUser.birthDate,
       numberOfChildren: updatedUser.numberOfChildren,
       maritalStatus: updatedUser.maritalStatus,
-      // profilePicture: updatedUser.profilePicture,
       isAdmin: updatedUser.isAdmin,
       token: getToken(updatedUser),
       _id: updatedUser.id,

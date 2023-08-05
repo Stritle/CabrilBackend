@@ -7,7 +7,6 @@ import orderRoute from "./routes/orderRoute.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import config from "./config.js";
-import multer from "multer";
 
 dotenv.config();
 
