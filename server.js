@@ -37,7 +37,26 @@ app.use(bodyParser.json());
 // });
 
 // const upload = multer({ storage });
+//___________________________________________
+const ImageSchema = new mongoose.Schema({
+  data: String,
+});
 
+const Image = mongoose.model("Image", ImageSchema);
+
+app.post("/upload-image", async (req, res) => {
+  try {
+    const { image } = req.body;
+
+    const newImage = new Image({ data: image });
+    await newImage.save();
+
+    res.status(201).json({ message: "Imagem salva com sucesso." });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao salvar a imagem." });
+  }
+});
+//___________________________________________
 app.use(
   cors({
     origin: ["https://quintadocabril.netlify.app/"],
