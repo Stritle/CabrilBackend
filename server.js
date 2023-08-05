@@ -25,7 +25,7 @@ if (mongodbUrl) {
 }
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "20mb" }));
 
 // const storage = multer.diskStorage({
 //   destination(req, file, callback) {
