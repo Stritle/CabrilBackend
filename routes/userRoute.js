@@ -56,8 +56,10 @@ router.post("/register", async (req, res) => {
     birthDate: req.body.birthDate,
     numberOfChildren: req.body.numberOfChildren,
     maritalStatus: req.body.maritalStatus,
+    profilePicture: req.body.profilePicture,
   });
   const newUser = await user.save();
+  res.status(201).json({ message: "Utilizador criado com sucesso." });
   if (newUser) {
     res.send({
       _id: newUser.id,
@@ -68,6 +70,7 @@ router.post("/register", async (req, res) => {
       birthDate: newUser.birthDate,
       numberOfChildren: newUser.numberOfChildren,
       maritalStatus: newUser.maritalStatus,
+      profilePicture: newUser.profilePicture,
       isAdmin: newUser.isAdmin,
       token: getToken(newUser),
     });
@@ -106,6 +109,7 @@ router.put("/:id", async (req, res) => {
     user.maritalStatus = req.body.maritalStatus || user.maritalStatus;
     user.profilePicture = req.body.profilePicture || user.profilePicture;
     const updatedUser = await user.save();
+    res.status(201).json({ message: "Dados atualizados com sucesso" });
     res.send({
       name: updatedUser.name,
       email: updatedUser.email,

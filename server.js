@@ -28,24 +28,24 @@ const app = express();
 app.use(bodyParser.json({ limit: "20mb" }));
 //____________________________________________
 
-const ImageSchema = new mongoose.Schema({
-  data: String,
-});
+// const ImageSchema = new mongoose.Schema({
+//   data: String,
+// });
 
-const Image = mongoose.model("Image", ImageSchema);
+// const Image = mongoose.model("Image", ImageSchema);
 
-app.post("/api/upload-image", async (req, res) => {
-  try {
-    const { image } = req.body;
+// app.post("/api/upload-image", async (req, res) => {
+//   try {
+//     const { image } = req.body;
 
-    const newImage = new Image({ data: image });
-    await newImage.save();
+//     const newImage = new User({ profilePicture: image });
+//     await newImage.save();
 
-    res.status(201).json({ message: "Imagem salva com sucesso." });
-  } catch (error) {
-    res.status(500).json({ error: "Erro ao salvar a imagem." });
-  }
-});
+//     res.status(201).json({ message: "Imagem salva com sucesso." });
+//   } catch (error) {
+//     res.status(500).json({ error: "Erro ao salvar a imagem." });
+//   }
+// });
 //___________________________________________
 app.use(
   cors({
