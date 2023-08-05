@@ -1,7 +1,6 @@
 import express from "express";
 import User from "../models/userModel.js";
 import { getToken, isAuth } from "../util.js";
-import multer from "multer";
 const router = express.Router();
 
 router.post("/signin", async (req, res) => {
@@ -18,6 +17,7 @@ router.post("/signin", async (req, res) => {
       birthDate: signinUser.birthDate,
       numberOfChildren: signinUser.numberOfChildren,
       maritalStatus: signinUser.maritalStatus,
+      base64Image: signinUser.base64Image,
       isAdmin: signinUser.isAdmin,
       userType: signinUser.userType,
       // profilePicture: signinUser.profilePicture,
@@ -86,8 +86,8 @@ router.put("/:id", async (req, res) => {
     user.birthDate = req.body.birthDate || user.birthDate;
     user.numberOfChildren = req.body.numberOfChildren || user.numberOfChildren;
     user.maritalStatus = req.body.maritalStatus || user.maritalStatus;
+    user.base64Image = req.body.base64Image || user.base64Image;
     const updatedUser = await user.save();
-
     res.send({
       name: updatedUser.name,
       email: updatedUser.email,
@@ -95,6 +95,7 @@ router.put("/:id", async (req, res) => {
       birthDate: updatedUser.birthDate,
       numberOfChildren: updatedUser.numberOfChildren,
       maritalStatus: updatedUser.maritalStatus,
+      base64Image: updatedUser.base64Image,
       isAdmin: updatedUser.isAdmin,
       token: getToken(updatedUser),
       _id: updatedUser.id,
