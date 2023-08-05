@@ -3,27 +3,6 @@ import User from "../models/userModel.js";
 import { getToken, isAuth } from "../util.js";
 import multer from "multer";
 const router = express.Router();
-//______________________________
-// const storage = multer.diskStorage({
-//   destination(req, file, callback) {
-//     callback(null, "./images");
-//   },
-//   filename(req, file, callback) {
-//     callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
-//   },
-// });
-
-// const upload = multer({ storage });
-
-// router.post("/api/uploadPhoto", upload.array("photo", 3), async (req, res) => {
-//   console.log("file", req.files);
-//   console.log("body", req.body);
-//   res.status(200).json({
-//     message: "success!",
-//   });
-// });
-
-//_____________________________________
 
 router.post("/signin", async (req, res) => {
   const signinUser = await User.findOne({
@@ -108,7 +87,7 @@ router.put("/:id", async (req, res) => {
     user.numberOfChildren = req.body.numberOfChildren || user.numberOfChildren;
     user.maritalStatus = req.body.maritalStatus || user.maritalStatus;
     const updatedUser = await user.save();
-    res.status(201).json({ message: "Dados atualizados com sucesso" });
+
     res.send({
       name: updatedUser.name,
       email: updatedUser.email,
