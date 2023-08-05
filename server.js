@@ -44,7 +44,7 @@ const ImageSchema = new mongoose.Schema({
 
 const Image = mongoose.model("Image", ImageSchema);
 
-app.post("/upload-image", async (req, res) => {
+app.post("/api/upload-image", async (req, res) => {
   try {
     const { image } = req.body;
 
