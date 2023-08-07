@@ -4,6 +4,7 @@ import userRoute from "./routes/userRoute.js";
 import bodyParser from "body-parser";
 import vinhoRoute from "./routes/vinhoRoute.js";
 import orderRoute from "./routes/orderRoute.js";
+import imagesDocsRoute from "./routes/imagesDocsRoute.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import config from "./config.js";
@@ -56,6 +57,7 @@ app.use(
 );
 
 app.use("/api/users", userRoute);
+app.use("/api/imagesDocs", imagesDocsRoute);
 app.use("/api/vinhos", vinhoRoute);
 app.use("/api/orders", orderRoute);
 app.get("/api/config/paypal", (req, res) => {
