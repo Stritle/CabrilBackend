@@ -11,10 +11,9 @@ router.post("/storeImages", async (req, res) => {
   res.status(201).json({ message: "Utilizador criado com sucesso." });
   if (newImagesDocs) {
     res.send({
-      _id: newImagesDocs.id,
       imagesDocs: newImagesDocs.imagesDocs,
-
       token: getToken(newImagesDocs),
+      _id: newImagesDocs.id,
     });
   } else res.status(401).send({ msg: "Dados inválidos!" });
 });
