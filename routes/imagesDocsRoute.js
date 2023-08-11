@@ -5,16 +5,16 @@ const router = express.Router();
 
 router.post("/storeDocs", async (req, res) => {
   const doc = new Docs({
-    base64Doc: req.body.base64Doc,
-    nameDoc: req.body.nameDoc,
+    base64Doc: req.body.imagesDocs,
+    nameDoc: req.body.docsName,
   });
   const newDoc = await doc.save();
   // res.status(201).json({ message: "Documentos guardado com sucesso." });
   if (newDoc) {
     res.send({
       _id: newDoc.id,
-      base64Doc: newDoc.base64Doc,
-      nameDoc: newDoc.nameDoc,
+      base64Doc: newDoc.imagesDocs,
+      nameDoc: newDoc.docsName,
       token: getToken(newDoc),
     });
   } else res.status(401).send({ msg: "Erro ao guardar Documentos" });
