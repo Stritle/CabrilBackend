@@ -9,13 +9,13 @@ router.post("/storeDocs", async (req, res) => {
     nameDoc: req.body.nameDoc,
   });
   const newDoc = await doc.save();
-  res.status(201).json({ message: "Documentos guardado com sucesso." });
+  // res.status(201).json({ message: "Documentos guardado com sucesso." });
   if (newDoc) {
     res.send({
+      _id: newDoc.id,
       base64Doc: newDoc.base64Doc,
       nameDoc: newDoc.nameDoc,
       token: getToken(newDoc),
-      _id: newDoc.id,
     });
   } else res.status(401).send({ msg: "Erro ao guardar Documentos" });
 });
