@@ -18,18 +18,18 @@ router.post("/storeDocs", async (req, res) => {
     });
   } else res.status(401).send({ msg: "Erro ao guardar Documentos" });
 });
-//..................................
-// router.get("/loadDocs", async (req, res) => {
-//   const docs = await ImagesDocs.find();
-//   const newDocs = await docs.save();
-//   res.status(201).json({ message: "Documentos carregados com sucesso" });
-//   if (newDocs) {
-//     res.send({
-//       imagesDocs: newDocs.imagesDocs,
-//       nameDoc: newDocs.nameDoc,
-//       token: getToken(newDocs),
-//     });
-//   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
-// });
+
+router.get("/loadDocs", async (req, res) => {
+  const docs = await ImagesDocs.find();
+  const newDocs = await docs.save();
+
+  if (newDocs) {
+    res.send({
+      imagesDocs: newDocs.imagesDocs,
+      nameDoc: newDocs.nameDoc,
+      token: getToken(newDocs),
+    });
+  } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
+});
 
 export default router;
