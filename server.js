@@ -57,7 +57,7 @@ app.use(
 );
 
 app.use("/api/users", userRoute);
-app.use("/api/imagesDocs", imagesDocsRoute);
+app.use("/api/docs", imagesDocsRoute);
 app.use("/api/vinhos", vinhoRoute);
 app.use("/api/orders", orderRoute);
 app.get("/api/config/paypal", (req, res) => {
