@@ -19,16 +19,16 @@ router.post("/storeDocs", async (req, res) => {
   } else res.status(401).send({ msg: "Erro ao guardar Documentos" });
 });
 
-router.get("/user/:userId/documents", async (req, res) => {
-  try {
-    const userId = req.params.userId;
-    const documents = await Document.find({ userId });
-    res.json(documents);
-  } catch (error) {
-    console.error("Erro ao obter documentos do Utilizador:", error);
-    res.status(500).json({ error: "Erro ao obter documentos do Utilizador." });
-  }
-});
+// router.get("/user/:userId/documents", async (req, res) => {
+//   try {
+//     const userId = req.params.userId;
+//     const documents = await Document.find({ userId });
+//     res.json(documents);
+//   } catch (error) {
+//     console.error("Erro ao obter documentos do Utilizador:", error);
+//     res.status(500).json({ error: "Erro ao obter documentos do Utilizador." });
+//   }
+// });
 
 //   const newDocs = await docs.save();
 
