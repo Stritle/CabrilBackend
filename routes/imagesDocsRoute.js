@@ -24,7 +24,6 @@ router.get("/loadDocs", async (req, res) => {
     const documents = await Document.find({ userId });
     if (documents) {
       res.send({
-        _id: documents.id,
         base64Doc: documents.base64Doc,
         nameDoc: documents.nameDoc,
         token: getToken(newDoc),
