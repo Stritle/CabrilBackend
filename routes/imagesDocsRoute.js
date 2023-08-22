@@ -15,6 +15,7 @@ router.post("/storeDocs", async (req, res) => {
       _id: newDoc.id,
       base64Doc: newDoc.base64Doc,
       nameDoc: newDoc.nameDoc,
+      userId: newDoc.userId,
       token: getToken(newDoc),
     });
   } else res.status(401).send({ msg: "Erro ao guardar Documentos" });
