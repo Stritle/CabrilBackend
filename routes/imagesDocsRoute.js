@@ -20,11 +20,10 @@ router.post("/storeDocs", async (req, res) => {
 });
 
 router.get("/loadDocs", async (req, res) => {
-  const { userId } = req.query;
   try {
-    const documents = await Docs.find({ userId: userId });
+    const documents = await Docs.find({ user: req.user._id });
     if (documents) {
-      res.json(documents);
+      res.send(documents);
     }
   } catch (error) {
     console.error("Erro ao obter documentos do Utilizador:", error);
