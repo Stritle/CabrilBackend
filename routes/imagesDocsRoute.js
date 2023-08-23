@@ -20,28 +20,15 @@ router.post("/storeDocs", async (req, res) => {
 });
 
 router.get("/loadDocs", async (req, res) => {
+  const { userId } = req.query;
   try {
-    const documents = await Docs.find({ userId: req.body.userId });
+    const documents = await Docs.find({ userId: userId });
     if (documents) {
-      res.send({
-        base64Doc: documents.base64Doc,
-        nameDoc: documents.nameDoc,
-        token: getToken(newDoc),
-      });
+      res.json(documents);
     }
   } catch (error) {
     console.error("Erro ao obter documentos do Utilizador:", error);
   }
 });
-
-//   const newDocs = await docs.save();
-
-//   if (newDocs) {
-//     res.send({
-//       imagesDocs: newDocs.imagesDocs,
-//       nameDoc: newDocs.nameDoc,
-//       token: getToken(newDocs),
-//     });
-//   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
 
 export default router;
