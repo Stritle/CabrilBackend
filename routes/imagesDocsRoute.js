@@ -7,7 +7,7 @@ router.post("/storeDocs", async (req, res) => {
   const doc = new Docs({
     base64Doc: req.body.base64Doc,
     nameDoc: req.body.nameDoc,
-    userId: req.body.userId,
+    user: req.user._id,
   });
   const newDoc = await doc.save();
   if (newDoc) {
