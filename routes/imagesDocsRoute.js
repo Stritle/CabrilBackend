@@ -21,7 +21,7 @@ router.post("/storeDocs", async (req, res) => {
 
 router.get("/loadDocs", isAuth, async (req, res) => {
   try {
-    const documents = await Docs.find();
+    const documents = await Docs.find({});
     if (documents) {
       res.send(documents);
     }
