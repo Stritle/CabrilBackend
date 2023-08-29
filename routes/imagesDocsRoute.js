@@ -21,7 +21,7 @@ router.post("/storeDocs", async (req, res) => {
 
 router.get("/loadDocs", async (req, res) => {
   try {
-    const documents = await Docs.find();
+    const documents = await Docs.find({ user: req.user._id });
     if (documents) {
       res.send(documents);
     }
