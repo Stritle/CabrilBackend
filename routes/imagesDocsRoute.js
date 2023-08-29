@@ -3,7 +3,7 @@ import Docs from "../models/docsModel.js";
 import { getToken, isAuth } from "../util.js";
 const router = express.Router();
 
-router.post("/storeDocs", isAuth, async (req, res) => {
+router.post("/storeDocs", async (req, res) => {
   const doc = new Docs({
     base64Doc: req.body.base64Doc,
     nameDoc: req.body.nameDoc,
