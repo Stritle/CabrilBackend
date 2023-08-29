@@ -5,14 +5,12 @@ const router = express.Router();
 
 router.post("/storeDocs", async (req, res) => {
   const doc = new Docs({
-    base64Doc: req.body.base64Doc,
     nameDoc: req.body.nameDoc,
     userId: req.body.userId,
   });
   const newDoc = await doc.save();
   if (newDoc) {
     res.send({
-      base64Doc: newDoc.base64Doc,
       nameDoc: newDoc.nameDoc,
       token: getToken(newDoc),
     });
