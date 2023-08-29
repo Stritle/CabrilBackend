@@ -18,7 +18,7 @@ router.post("/storeDocs", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const userId = req.params.userId;
+  const userId = req.body.userId;
   const documents = await Docs.find(userId);
   if (documents) {
     console.log(documents);
