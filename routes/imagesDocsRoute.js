@@ -19,10 +19,11 @@ router.post("/storeDocs", async (req, res) => {
   } else res.status(401).send({ msg: "Erro ao guardar Documentos" });
 });
 
-router.get("/loadDocs", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const documents = await Docs.find();
     if (documents) {
+      console.log(documents);
       res.send(documents);
     } else {
       res.status(404).send("doc Not Found.");
