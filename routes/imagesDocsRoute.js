@@ -22,7 +22,11 @@ router.post("/storeDocs", async (req, res) => {
 router.get("/loadDocs", async (req, res) => {
   try {
     const documents = await Docs.find({});
-    res.send(documents);
+    if (documents) {
+      res.send(documents);
+    } else {
+      res.status(404).send("doc Not Found.");
+    }
   } catch (error) {
     console.error("Erro ao obter documentos do Utilizador:", error);
   }
