@@ -19,10 +19,8 @@ router.post("/storeDocs", async (req, res) => {
 
 router.get("/:userId", async (req, res) => {
   const userId = req.params.userId;
-  console.log(req.params.userId);
   const documents = await Docs.find({ userId });
   if (documents) {
-    console.log(documents);
     res.send(documents);
   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
 });
