@@ -10,6 +10,7 @@ router.post("/storeDocs", async (req, res) => {
   });
   const newDoc = await doc.save();
   if (newDoc) {
+    res.status(401).send({ msg: "guardadooooooooooooo" });
     res.send({
       token: getToken(newDoc),
     });
