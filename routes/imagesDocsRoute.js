@@ -12,6 +12,7 @@ router.post("/storeDocs", async (req, res) => {
   const newDoc = await doc.save();
   if (newDoc) {
     res.send({
+      nameDoc: newDoc.nameDoc,
       token: getToken(newDoc),
     });
   } else {
