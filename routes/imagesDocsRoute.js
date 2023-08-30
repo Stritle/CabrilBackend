@@ -27,7 +27,7 @@ router.get("/:userId", async (req, res) => {
     res.send(documents);
   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
 });
-router.post("/loadfile", async (req, res) => {
+router.post("/openfile", async (req, res) => {
   const documents = await Docs.find({
     nameDoc: req.body.nameDoc,
     userId: req.body.userId,
