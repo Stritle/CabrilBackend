@@ -41,7 +41,7 @@ router.post("/openfile", async (req, res) => {
   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
 });
 
-router.delete("/deletedoc:id", async (req, res) => {
+router.delete("/deletedoc:docId", async (req, res) => {
   const documents = await Docs.findOne({ _id: req.params.docId });
   if (documents) {
     const deletedOrder = await documents.remove();
