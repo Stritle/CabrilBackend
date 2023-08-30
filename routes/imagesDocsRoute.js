@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post("/storeDocs", async (req, res) => {
   const doc = new Docs({
+    base64Doc: req.body.base64Doc,
     nameDoc: req.body.nameDoc,
     userId: req.body.userId,
   });
