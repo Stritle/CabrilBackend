@@ -35,8 +35,6 @@ router.post("/openfile", async (req, res) => {
   if (documents) {
     res.send({
       base64Doc: documents.base64Doc,
-      _id: documents._id,
-
       token: getToken(documents),
     });
   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
