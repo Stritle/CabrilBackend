@@ -33,7 +33,7 @@ router.post("/loadfile", async (req, res) => {
     userId: req.body.userId,
   });
   if (documents) {
-    res.send({ base64Doc: documents.base64Doc, token: getToken(documents) });
+    res.send({ base64Doc: documents.base64Doc });
   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
 });
 
