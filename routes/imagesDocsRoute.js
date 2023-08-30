@@ -27,7 +27,7 @@ router.get("/:userId", async (req, res) => {
     res.send(documents);
   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
 });
-router.get("/nameDoc", async (req, res) => {
+router.get("/:nameDoc", async (req, res) => {
   const nameDoc = req.params.nameDoc;
   const documents = await Docs.find({ nameDoc });
   if (documents) {
