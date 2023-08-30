@@ -19,7 +19,7 @@ router.post("/storeDocs", async (req, res) => {
     res.status(401).send({ msg: "Erro ao guardar Documentos" });
   }
 });
-
+//buscar todos os dosc do utilizador
 router.get("/:userId", async (req, res) => {
   const userId = req.params.userId;
   const documents = await Docs.find({ userId });
@@ -27,9 +27,11 @@ router.get("/:userId", async (req, res) => {
     res.send(documents);
   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
 });
-router.get("/:nameDoc", async (req, res) => {
-  const nameDoc = req.params.nameDoc;
-  const documents = await Docs.find({ nameDoc });
+router.post("/loadfile", async (req, res) => {
+  const documents = await Docs.find({
+    nameDoc: req.body.nameDoc,
+    userId: req.body.userId,
+  });
   if (documents) {
     res.send({ base64Doc: documents.base64Doc });
   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
