@@ -29,9 +29,9 @@ router.get("/:userId", async (req, res) => {
 });
 router.get("/nameDoc", async (req, res) => {
   const nameDoc = req.params.nameDoc;
-  const documents = await Docs.find({ userId, nameDoc });
+  const documents = await Docs.find({ nameDoc });
   if (documents) {
-    res.send(documents.base64Doc);
+    res.send({ base64Doc: documents.base64Doc });
   } else res.status(401).send({ msg: "Erro ao carregar Documentos" });
 });
 
