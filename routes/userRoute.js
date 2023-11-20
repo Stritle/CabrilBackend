@@ -106,7 +106,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.put("/changePassword:id", async (req, res) => {
+router.put("/changePassword/:id", async (req, res) => {
   const userId = req.params.id;
   const user = await User.findById(userId);
   if (user) {
