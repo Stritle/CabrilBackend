@@ -18,6 +18,7 @@ router.post("/signin", async (req, res) => {
       numberOfChildren: signinUser.numberOfChildren,
       maritalStatus: signinUser.maritalStatus,
       base64Image: signinUser.base64Image,
+      password: signinUser.password,
       isAdmin: signinUser.isAdmin,
       userType: signinUser.userType,
       // profilePicture: signinUser.profilePicture,
